@@ -19,6 +19,11 @@ Une application Django avec une pipeline CI/CD complète utilisant GitHub Action
 
 ## 🚀 Démarrage rapide
 
+Votre pipeline CI/CD est maintenant **entièrement opérationnelle** et prête pour le développement en équipe ! 🎯
+
+## 🔄 Pipeline Status
+- Initial deployment triggered to build Docker image for Kubernetes
+
 ### Développement local
 
 1. **Configuration de l'environnement de développement :**
