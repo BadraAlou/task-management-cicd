@@ -8,7 +8,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: badraAlou/task-management-cicd
+  IMAGE_NAME: badraalou/task-management-cicd
 
 jobs:
   test:
@@ -107,7 +107,7 @@ jobs:
     - name: Update Kubernetes manifests
       run: |
         # Update image tag in Kubernetes manifests
-        sed -i "s|image: ghcr.io/badraAlou/task-management-cicd:.*|image: ghcr.io/badraAlou/task-management-cicd:main-${{ github.sha }}|g" k8s/deployment.yaml
+        sed -i "s|image: ghcr.io/badraalou/task-management-cicd:.*|image: ghcr.io/badraalou/task-management-cicd:main-${{ github.sha }}|g" k8s/deployment.yaml
         
     - name: Commit and push changes
       run: |

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: tastmanagement
-        image: ghcr.io/badraAlou/task-management-cicd:latest
+        image: ghcr.io/badraalou/task-management-cicd:latest
         ports:
         - containerPort: 8000
         env:
