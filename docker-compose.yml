@@ -1,0 +1,37 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - DJANGO_SETTINGS_MODULE=tastmanagement.settings
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/tastmanagement
+      - ALLOWED_HOSTS=*
+    depends_on:
+      - db
+    volumes:
+      - static_volume:/app/staticfiles
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_DB=tastmanagement
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - static_volume:/app/staticfiles
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  static_volume:
