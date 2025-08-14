@@ -4,6 +4,6 @@ metadata:
   name: tastmanagement-config
   namespace: tastmanagement
 data:
-  DEBUG: "False"
+  DEBUG: "True"
   ALLOWED_HOSTS: "*"
   DATABASE_URL: "postgresql://postgres:postgres@postgres-service:5432/tastmanagement"
