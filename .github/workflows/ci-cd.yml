@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [ main ]
 
+# Permissions nécessaires pour GitHub Actions
+permissions:
+  contents: write    # Pour pousser les changements
+  packages: write    # Pour pousser vers GHCR
+  actions: read      # Pour lire les workflows
+
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: badraalou/task-management-cicd
