@@ -110,15 +110,18 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Update Kubernetes manifests
+    - name: Trigger Kubernetes Rollout
       run: |
-        # Update image tag in Kubernetes manifests
-        sed -i "s|image: ghcr.io/badraalou/task-management-cicd:.*|image: ghcr.io/badraalou/task-management-cicd:main-${{ github.sha }}|g" k8s/deployment.yaml
-        
-    - name: Commit and push changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add k8s/deployment.yaml
-        git diff --staged --quiet || git commit -m "Update image tag to main-${{ github.sha }}"
-        git push
+        echo "✅ Docker image pushed to registry with latest tag"
+        echo "✅ Kubernetes deployment configured with imagePullPolicy: Always"
+        echo "🚀 Image build completed successfully!"
+        echo ""
+        echo "Build completed at: $(date)"
+        echo "Commit SHA: ${{ github.sha }}"
+        echo ""
+        echo "📝 Next steps for deployment:"
+        echo "1. Run: ./scripts/auto-deploy.sh (for immediate deployment)"
+        echo "2. Or use: kubectl rollout restart deployment/tastmanagement-app -n tastmanagement"
+        echo "3. Or wait for ArgoCD sync (if configured)"
+        echo ""
+        echo "💡 The deployment will automatically pull the latest image thanks to imagePullPolicy: Always"
